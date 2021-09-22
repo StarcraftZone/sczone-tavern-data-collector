@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("星际战区-酒馆数据采集器")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("https://sc.yuanfen.net")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("https://sc.yuanfen.net")]
 [assembly: AssemblyProduct("星际战区-酒馆数据采集器")]
 [assembly: AssemblyCopyright("Copyright © 猿奋网络 2021")]
 [assembly: AssemblyTrademark("")]
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.2")]
-[assembly: AssemblyFileVersion("1.0.0.2")]
+[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
