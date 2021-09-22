@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("SczoneTavernDataCollector.Updater")]
+[assembly: AssemblyTitle("星际战区-酒馆数据采集器-自动更新程序")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SczoneTavernDataCollector.Updater")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyProduct("星际战区-酒馆数据采集器")]
+[assembly: AssemblyCopyright("Copyright © 猿奋网络 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

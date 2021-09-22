@@ -29,51 +29,53 @@ namespace SczoneTavernDataCollector.Updater
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.updateProgressBar = new System.Windows.Forms.ProgressBar();
+            this.textLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // progressBar1
+            // updateProgressBar
             // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar1.Location = new System.Drawing.Point(20, 20);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(436, 61);
-            this.progressBar1.TabIndex = 0;
+            this.updateProgressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.updateProgressBar.Location = new System.Drawing.Point(20, 20);
+            this.updateProgressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.updateProgressBar.Name = "updateProgressBar";
+            this.updateProgressBar.Size = new System.Drawing.Size(436, 61);
+            this.updateProgressBar.TabIndex = 0;
             // 
-            // label1
+            // textLabel
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(20, 118);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(436, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "正在更新";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textLabel.Location = new System.Drawing.Point(20, 118);
+            this.textLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.textLabel.Name = "textLabel";
+            this.textLabel.Size = new System.Drawing.Size(436, 28);
+            this.textLabel.TabIndex = 1;
+            this.textLabel.Text = "正在更新";
+            this.textLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(476, 166);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.textLabel);
+            this.Controls.Add(this.updateProgressBar);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(500, 230);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(20);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "自动更新";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar updateProgressBar;
+        private System.Windows.Forms.Label textLabel;
     }
 }
 

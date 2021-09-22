@@ -22,5 +22,23 @@ namespace SczoneTavernDataCollector.Main.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SczoneTavernDataCollector")]
+        public string MainAppName {
+            get {
+                return ((string)(this["MainAppName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Updater")]
+        public string UpdaterAppName {
+            get {
+                return ((string)(this["UpdaterAppName"]));
+            }
+        }
     }
 }

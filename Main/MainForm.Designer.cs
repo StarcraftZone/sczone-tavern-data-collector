@@ -30,7 +30,7 @@ namespace SczoneTavernDataCollector.Main
         private void InitializeComponent()
         {
             this.OperationGroupBox = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
             this.CheckVersionButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.LogGroupBox = new System.Windows.Forms.GroupBox();
@@ -48,10 +48,11 @@ namespace SczoneTavernDataCollector.Main
             // 
             // OperationGroupBox
             // 
-            this.OperationGroupBox.Controls.Add(this.label3);
+            this.OperationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OperationGroupBox.Controls.Add(this.VersionLabel);
             this.OperationGroupBox.Controls.Add(this.CheckVersionButton);
             this.OperationGroupBox.Controls.Add(this.RefreshButton);
-            this.OperationGroupBox.Location = new System.Drawing.Point(1059, 723);
+            this.OperationGroupBox.Location = new System.Drawing.Point(754, 538);
             this.OperationGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OperationGroupBox.Name = "OperationGroupBox";
             this.OperationGroupBox.Padding = new System.Windows.Forms.Padding(20);
@@ -60,16 +61,16 @@ namespace SczoneTavernDataCollector.Main
             this.OperationGroupBox.TabStop = false;
             this.OperationGroupBox.Text = "操作";
             // 
-            // label3
+            // VersionLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label3.Location = new System.Drawing.Point(170, 248);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 28);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "版本号：V1.0.0";
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.VersionLabel.Location = new System.Drawing.Point(170, 248);
+            this.VersionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(156, 28);
+            this.VersionLabel.TabIndex = 4;
+            this.VersionLabel.Text = "版本号：V1.0.0";
             // 
             // CheckVersionButton
             // 
@@ -101,7 +102,7 @@ namespace SczoneTavernDataCollector.Main
             this.LogGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogGroupBox.Name = "LogGroupBox";
             this.LogGroupBox.Padding = new System.Windows.Forms.Padding(20);
-            this.LogGroupBox.Size = new System.Drawing.Size(1019, 995);
+            this.LogGroupBox.Size = new System.Drawing.Size(714, 810);
             this.LogGroupBox.TabIndex = 1;
             this.LogGroupBox.TabStop = false;
             this.LogGroupBox.Text = "日志";
@@ -115,21 +116,23 @@ namespace SczoneTavernDataCollector.Main
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(979, 927);
+            this.LogTextBox.Size = new System.Drawing.Size(674, 742);
             this.LogTextBox.TabIndex = 0;
             // 
             // IntroductionGroupBox
             // 
+            this.IntroductionGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.IntroductionGroupBox.Controls.Add(this.SczoneLinkLabel);
             this.IntroductionGroupBox.Controls.Add(this.label4);
             this.IntroductionGroupBox.Controls.Add(this.label5);
             this.IntroductionGroupBox.Controls.Add(this.label2);
             this.IntroductionGroupBox.Controls.Add(this.label1);
-            this.IntroductionGroupBox.Location = new System.Drawing.Point(1059, 23);
+            this.IntroductionGroupBox.Location = new System.Drawing.Point(754, 23);
             this.IntroductionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.IntroductionGroupBox.Name = "IntroductionGroupBox";
             this.IntroductionGroupBox.Padding = new System.Windows.Forms.Padding(9, 11, 9, 11);
-            this.IntroductionGroupBox.Size = new System.Drawing.Size(349, 693);
+            this.IntroductionGroupBox.Size = new System.Drawing.Size(349, 508);
             this.IntroductionGroupBox.TabIndex = 2;
             this.IntroductionGroupBox.TabStop = false;
             this.IntroductionGroupBox.Text = "说明";
@@ -188,14 +191,16 @@ namespace SczoneTavernDataCollector.Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1431, 1041);
+            this.ClientSize = new System.Drawing.Size(1126, 856);
             this.Controls.Add(this.IntroductionGroupBox);
             this.Controls.Add(this.LogGroupBox);
             this.Controls.Add(this.OperationGroupBox);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(1150, 920);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(20);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "星际战区-酒馆数据采集器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -219,7 +224,7 @@ namespace SczoneTavernDataCollector.Main
         private System.Windows.Forms.GroupBox IntroductionGroupBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel SczoneLinkLabel;
         private System.Windows.Forms.Label label5;
