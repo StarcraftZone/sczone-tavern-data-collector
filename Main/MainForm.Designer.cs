@@ -53,7 +53,7 @@ namespace SczoneTavernDataCollector.Main
             this.OperationGroupBox.Controls.Add(this.VersionLabel);
             this.OperationGroupBox.Controls.Add(this.CheckVersionButton);
             this.OperationGroupBox.Controls.Add(this.RefreshButton);
-            this.OperationGroupBox.Location = new System.Drawing.Point(754, 538);
+            this.OperationGroupBox.Location = new System.Drawing.Point(926, 538);
             this.OperationGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OperationGroupBox.Name = "OperationGroupBox";
             this.OperationGroupBox.Padding = new System.Windows.Forms.Padding(20);
@@ -103,7 +103,7 @@ namespace SczoneTavernDataCollector.Main
             this.LogGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogGroupBox.Name = "LogGroupBox";
             this.LogGroupBox.Padding = new System.Windows.Forms.Padding(20);
-            this.LogGroupBox.Size = new System.Drawing.Size(714, 810);
+            this.LogGroupBox.Size = new System.Drawing.Size(886, 810);
             this.LogGroupBox.TabIndex = 1;
             this.LogGroupBox.TabStop = false;
             this.LogGroupBox.Text = "日志";
@@ -117,7 +117,7 @@ namespace SczoneTavernDataCollector.Main
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(674, 742);
+            this.LogTextBox.Size = new System.Drawing.Size(846, 742);
             this.LogTextBox.TabIndex = 0;
             // 
             // IntroductionGroupBox
@@ -129,7 +129,7 @@ namespace SczoneTavernDataCollector.Main
             this.IntroductionGroupBox.Controls.Add(this.label5);
             this.IntroductionGroupBox.Controls.Add(this.label2);
             this.IntroductionGroupBox.Controls.Add(this.label1);
-            this.IntroductionGroupBox.Location = new System.Drawing.Point(754, 23);
+            this.IntroductionGroupBox.Location = new System.Drawing.Point(926, 23);
             this.IntroductionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.IntroductionGroupBox.Name = "IntroductionGroupBox";
             this.IntroductionGroupBox.Padding = new System.Windows.Forms.Padding(9, 11, 9, 11);
@@ -192,7 +192,7 @@ namespace SczoneTavernDataCollector.Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1126, 856);
+            this.ClientSize = new System.Drawing.Size(1298, 856);
             this.Controls.Add(this.IntroductionGroupBox);
             this.Controls.Add(this.LogGroupBox);
             this.Controls.Add(this.OperationGroupBox);

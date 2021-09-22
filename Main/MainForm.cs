@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,7 +57,13 @@ namespace SczoneTavernDataCollector.Main
                     var accountNo = accountDirectory.Name;
                     foreach (var directory in accountDirectory.GetDirectories())
                     {
-                        Log(directory.Name);
+                        var profileFolderRegex = new Regex(@"(\d*)-S2-(\d*)-(\d*)");
+                        if (profileFolderRegex.IsMatch(directory.Name))
+                        {
+                            var matches = profileFolderRegex.Match(directory.Name);
+                            Log(directory.Name);
+                            Log($"region: {matches.Groups[1].Value}, realm: {matches.Groups[2].Value}, profileNo: {matches.Groups[3].Value}");
+                        }
                     }
                 }
             }
