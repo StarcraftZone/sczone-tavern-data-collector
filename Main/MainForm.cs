@@ -1,18 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
+using Newtonsoft.Json;
 
 namespace SczoneTavernDataCollector.Main
 {
     public partial class MainForm : Form
     {
+        private const string TavernModeStandardRanked = "StandardRanked";
+        private const string TavernModeStandardUnranked = "StandardUnranked";
+        private const string TavernModeAutoRanked = "AutoRanked";
+        private const string TavernModeAutoUnranked = "AutoUnranked";
+        private static DateTime LastEditTime;
+
         public MainForm()
         {
             InitializeComponent();
@@ -55,14 +66,39 @@ namespace SczoneTavernDataCollector.Main
                 foreach (var accountDirectory in accountsDirectory.GetDirectories())
                 {
                     var accountNo = accountDirectory.Name;
-                    foreach (var directory in accountDirectory.GetDirectories())
+                    foreach (var accountSubDirectory in accountDirectory.GetDirectories())
                     {
                         var profileFolderRegex = new Regex(@"(\d*)-S2-(\d*)-(\d*)");
-                        if (profileFolderRegex.IsMatch(directory.Name))
+                        if (profileFolderRegex.IsMatch(accountSubDirectory.Name))
                         {
-                            var matches = profileFolderRegex.Match(directory.Name);
-                            Log(directory.Name);
-                            Log($"region: {matches.Groups[1].Value}, realm: {matches.Groups[2].Value}, profileNo: {matches.Groups[3].Value}");
+                            var matches = profileFolderRegex.Match(accountSubDirectory.Name);
+                            var regionNo = int.Parse(matches.Groups[1].Value);
+                            var realmNo = int.Parse(matches.Groups[2].Value);
+                            var profileNo = long.Parse(matches.Groups[3].Value);
+                            if (realmNo > 0)
+                            {
+                                var tavernDirectory = new DirectoryInfo(Path.Combine(accountSubDirectory.FullName, "Banks/5-S2-1-1337869"));
+                                if (tavernDirectory.Exists)
+                                {
+                                    UploadBankData(Path.Combine(tavernDirectory.FullName, "SCBar.SC2Bank"), regionNo, realmNo, profileNo);
+                                }
+                                var watcher = new FileSystemWatcher();
+                                watcher.Path = accountSubDirectory.FullName;
+                                watcher.IncludeSubdirectories = true;
+                                watcher.NotifyFilter = NotifyFilters.LastWrite;
+                                watcher.Filter = "*.SC2Bank";
+                                watcher.Changed += (object sender, FileSystemEventArgs e) =>
+                                {
+                                    if (LastEditTime == null || DateTime.Now - LastEditTime > TimeSpan.FromSeconds(5))
+                                    {
+                                        // 处理重复触发的问题，5 秒内只处理一次
+                                        LastEditTime = DateTime.Now;
+                                        Thread.Sleep(1000);
+                                        UploadBankData(e.FullPath, regionNo, realmNo, profileNo);
+                                    }
+                                };
+                                watcher.EnableRaisingEvents = true;
+                            }
                         }
                     }
                 }
@@ -71,6 +107,38 @@ namespace SczoneTavernDataCollector.Main
             {
                 Log("Accounts 目录不存在：" + accountsDirectory.FullName);
             }
+        }
+
+        private void UploadBankData(string filePath, int regionNo, int realmNo, long profileNo)
+        {
+            var xmlString = File.ReadAllText(filePath, Encoding.UTF8);
+            var doc = XDocument.Parse(xmlString);
+            var sections = doc.Descendants("Section");
+            var dataList = new List<TavernData>();
+            dataList.Add(GetTravernDataFromSection(sections, TavernModeStandardRanked, regionNo, realmNo, profileNo));
+            dataList.Add(GetTravernDataFromSection(sections, TavernModeStandardUnranked, regionNo, realmNo, profileNo));
+            dataList.Add(GetTravernDataFromSection(sections, TavernModeAutoRanked, regionNo, realmNo, profileNo));
+            dataList.Add(GetTravernDataFromSection(sections, TavernModeAutoUnranked, regionNo, realmNo, profileNo));
+
+            // TODO: 上传
+            Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传成功: {JsonConvert.SerializeObject(dataList)}");
+        }
+
+        private TavernData GetTravernDataFromSection(IEnumerable<XElement> sections, string sectionName, int regionNo, int realmNo, long profileNo)
+        {
+            var elements = sections.FirstOrDefault(s => s.Attribute("name").Value == sectionName).Elements();
+            return new TavernData
+            {
+                Mode = sectionName,
+                RegionNo = regionNo,
+                RealmNo = realmNo,
+                ProfileNo = profileNo,
+                Top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
+                Top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
+                Games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
+                Elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
+                Code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
+            };
         }
 
         private void CheckNewVersion()
