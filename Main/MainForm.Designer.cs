@@ -51,7 +51,8 @@ namespace SczoneTavernDataCollector.Main
             this.OperationGroupBox.Controls.Add(this.label3);
             this.OperationGroupBox.Controls.Add(this.CheckVersionButton);
             this.OperationGroupBox.Controls.Add(this.RefreshButton);
-            this.OperationGroupBox.Location = new System.Drawing.Point(1059, 722);
+            this.OperationGroupBox.Location = new System.Drawing.Point(1059, 723);
+            this.OperationGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OperationGroupBox.Name = "OperationGroupBox";
             this.OperationGroupBox.Padding = new System.Windows.Forms.Padding(20);
             this.OperationGroupBox.Size = new System.Drawing.Size(349, 296);
@@ -64,6 +65,7 @@ namespace SczoneTavernDataCollector.Main
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label3.Location = new System.Drawing.Point(170, 248);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 28);
             this.label3.TabIndex = 4;
@@ -71,7 +73,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // CheckVersionButton
             // 
-            this.CheckVersionButton.Location = new System.Drawing.Point(23, 154);
+            this.CheckVersionButton.Location = new System.Drawing.Point(22, 155);
+            this.CheckVersionButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CheckVersionButton.Name = "CheckVersionButton";
             this.CheckVersionButton.Size = new System.Drawing.Size(303, 72);
             this.CheckVersionButton.TabIndex = 0;
@@ -80,7 +83,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(23, 50);
+            this.RefreshButton.Location = new System.Drawing.Point(22, 51);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(303, 72);
             this.RefreshButton.TabIndex = 0;
@@ -93,7 +97,8 @@ namespace SczoneTavernDataCollector.Main
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogGroupBox.Controls.Add(this.LogTextBox);
-            this.LogGroupBox.Location = new System.Drawing.Point(23, 23);
+            this.LogGroupBox.Location = new System.Drawing.Point(22, 23);
+            this.LogGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogGroupBox.Name = "LogGroupBox";
             this.LogGroupBox.Padding = new System.Windows.Forms.Padding(20);
             this.LogGroupBox.Size = new System.Drawing.Size(1019, 995);
@@ -104,12 +109,13 @@ namespace SczoneTavernDataCollector.Main
             // LogTextBox
             // 
             this.LogTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogTextBox.Location = new System.Drawing.Point(20, 47);
+            this.LogTextBox.Location = new System.Drawing.Point(20, 48);
+            this.LogTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(979, 928);
+            this.LogTextBox.Size = new System.Drawing.Size(979, 927);
             this.LogTextBox.TabIndex = 0;
             // 
             // IntroductionGroupBox
@@ -120,8 +126,9 @@ namespace SczoneTavernDataCollector.Main
             this.IntroductionGroupBox.Controls.Add(this.label2);
             this.IntroductionGroupBox.Controls.Add(this.label1);
             this.IntroductionGroupBox.Location = new System.Drawing.Point(1059, 23);
+            this.IntroductionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.IntroductionGroupBox.Name = "IntroductionGroupBox";
-            this.IntroductionGroupBox.Padding = new System.Windows.Forms.Padding(10);
+            this.IntroductionGroupBox.Padding = new System.Windows.Forms.Padding(9, 11, 9, 11);
             this.IntroductionGroupBox.Size = new System.Drawing.Size(349, 693);
             this.IntroductionGroupBox.TabIndex = 2;
             this.IntroductionGroupBox.TabStop = false;
@@ -130,7 +137,8 @@ namespace SczoneTavernDataCollector.Main
             // SczoneLinkLabel
             // 
             this.SczoneLinkLabel.AutoSize = true;
-            this.SczoneLinkLabel.Location = new System.Drawing.Point(23, 375);
+            this.SczoneLinkLabel.Location = new System.Drawing.Point(22, 375);
+            this.SczoneLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SczoneLinkLabel.Name = "SczoneLinkLabel";
             this.SczoneLinkLabel.Size = new System.Drawing.Size(305, 28);
             this.SczoneLinkLabel.TabIndex = 1;
@@ -142,6 +150,7 @@ namespace SczoneTavernDataCollector.Main
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 335);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 28);
             this.label4.TabIndex = 0;
@@ -151,6 +160,7 @@ namespace SczoneTavernDataCollector.Main
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 440);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(235, 28);
             this.label5.TabIndex = 0;
@@ -158,7 +168,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(13, 178);
+            this.label2.Location = new System.Drawing.Point(13, 179);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(323, 128);
             this.label2.TabIndex = 0;
@@ -167,6 +178,7 @@ namespace SczoneTavernDataCollector.Main
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(13, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(323, 128);
             this.label1.TabIndex = 0;
@@ -174,12 +186,14 @@ namespace SczoneTavernDataCollector.Main
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1431, 1041);
             this.Controls.Add(this.IntroductionGroupBox);
             this.Controls.Add(this.LogGroupBox);
             this.Controls.Add(this.OperationGroupBox);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(20);
             this.Text = "星际战区-酒馆数据采集器";

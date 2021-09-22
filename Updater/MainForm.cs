@@ -16,6 +16,5 @@ namespace SczoneTavernDataCollector.Updater
         {
             InitializeComponent();
         }
-
     }
 }
