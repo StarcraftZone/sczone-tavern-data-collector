@@ -8,5 +8,8 @@
     <Setting Name="UpdaterAppName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Updater</Value>
     </Setting>
+    <Setting Name="ApiOrigin" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://sc-api.yuanfen.net</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

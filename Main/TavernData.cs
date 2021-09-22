@@ -2,22 +2,22 @@
 {
     public class TavernData
     {
-        public int RegionNo { get; set; }
+        public int regionNo { get; set; }
 
-        public int RealmNo { get; set; }
+        public int realmNo { get; set; }
 
-        public long ProfileNo { get; set; }
+        public long profileNo { get; set; }
 
-        public string Mode { get; set; }
+        public string mode { get; set; }
 
-        public int Top1 { get; set; }
+        public int top1 { get; set; }
 
-        public int Top4 { get; set; }
+        public int top4 { get; set; }
 
-        public int Games { get; set; }
+        public int games { get; set; }
 
-        public double Elo { get; set; }
+        public double elo { get; set; }
 
-        public long Code { get; set; }
+        public long code { get; set; }
     }
 }

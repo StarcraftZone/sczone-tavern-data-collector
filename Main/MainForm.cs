@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SczoneTavernDataCollector.Main
 {
@@ -120,7 +121,11 @@ namespace SczoneTavernDataCollector.Main
             dataList.Add(GetTravernDataFromSection(sections, TavernModeAutoRanked, regionNo, realmNo, profileNo));
             dataList.Add(GetTravernDataFromSection(sections, TavernModeAutoUnranked, regionNo, realmNo, profileNo));
 
-            // TODO: 上传
+            foreach (var data in dataList)
+            {
+                HttpHelper.Post($"{Properties.Settings.Default.ApiOrigin}/tavern/upload", data);
+            }
+
             Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传成功: {JsonConvert.SerializeObject(dataList)}");
         }
 
@@ -129,15 +134,15 @@ namespace SczoneTavernDataCollector.Main
             var elements = sections.FirstOrDefault(s => s.Attribute("name").Value == sectionName).Elements();
             return new TavernData
             {
-                Mode = sectionName,
-                RegionNo = regionNo,
-                RealmNo = realmNo,
-                ProfileNo = profileNo,
-                Top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
-                Top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
-                Games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
-                Elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
-                Code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
+                mode = sectionName,
+                regionNo = regionNo,
+                realmNo = realmNo,
+                profileNo = profileNo,
+                top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
+                top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
+                games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
+                elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
+                code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
             };
         }
 
@@ -147,7 +152,7 @@ namespace SczoneTavernDataCollector.Main
             {
                 Task.Run(() =>
                 {
-                    var response = HttpHelper.Get("https://sc-api.yuanfen.net/app/code/tavern-data-collector");
+                    var response = HttpHelper.Get($"{Properties.Settings.Default.ApiOrigin}/app/code/tavern-data-collector");
                     if (response.code == 0 && response.data != null)
                     {
                         var latestVersion = new Version((string)response.data.latestVersion);
@@ -259,6 +264,16 @@ namespace SczoneTavernDataCollector.Main
                 Log("准备启动更新器 " + appName);
                 Process.Start(Path.Combine(Application.StartupPath, appName + ".exe"));
             }
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            FindTavernBankFiles();
+        }
+
+        private void CheckVersionButton_Click(object sender, EventArgs e)
+        {
+            CheckNewVersion();
         }
     }
 }

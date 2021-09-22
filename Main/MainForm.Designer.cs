@@ -82,6 +82,7 @@ namespace SczoneTavernDataCollector.Main
             this.CheckVersionButton.TabIndex = 0;
             this.CheckVersionButton.Text = "检查更新";
             this.CheckVersionButton.UseVisualStyleBackColor = true;
+            this.CheckVersionButton.Click += new System.EventHandler(this.CheckVersionButton_Click);
             // 
             // RefreshButton
             // 
@@ -92,6 +93,7 @@ namespace SczoneTavernDataCollector.Main
             this.RefreshButton.TabIndex = 0;
             this.RefreshButton.Text = "手动上传";
             this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // LogGroupBox
             // 

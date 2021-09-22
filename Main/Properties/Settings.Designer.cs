@@ -40,5 +40,14 @@ namespace SczoneTavernDataCollector.Main.Properties {
                 return ((string)(this["UpdaterAppName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://sc-api.yuanfen.net")]
+        public string ApiOrigin {
+            get {
+                return ((string)(this["ApiOrigin"]));
+            }
+        }
     }
 }
