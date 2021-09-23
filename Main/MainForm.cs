@@ -123,7 +123,10 @@ namespace SczoneTavernDataCollector.Main
 
             foreach (var data in dataList)
             {
-                HttpHelper.Post($"{Properties.Settings.Default.ApiOrigin}/tavern/upload", data);
+                if (data != null)
+                {
+                    HttpHelper.Post($"{Properties.Settings.Default.ApiOrigin}/tavern/upload", data);
+                }
             }
 
             Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传成功: {JsonConvert.SerializeObject(dataList)}");
@@ -131,19 +134,27 @@ namespace SczoneTavernDataCollector.Main
 
         private TavernData GetTravernDataFromSection(IEnumerable<XElement> sections, string sectionName, int regionNo, int realmNo, long profileNo)
         {
-            var elements = sections.FirstOrDefault(s => s.Attribute("name").Value == sectionName).Elements();
-            return new TavernData
+            var section = sections.FirstOrDefault(s => s.Attribute("name").Value == sectionName);
+            if (section != null)
             {
-                mode = sectionName,
-                regionNo = regionNo,
-                realmNo = realmNo,
-                profileNo = profileNo,
-                top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
-                top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
-                games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
-                elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
-                code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
-            };
+                var elements = section.Elements();
+                return new TavernData
+                {
+                    mode = sectionName,
+                    regionNo = regionNo,
+                    realmNo = realmNo,
+                    profileNo = profileNo,
+                    top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
+                    top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
+                    games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
+                    elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
+                    code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private void CheckNewVersion()
