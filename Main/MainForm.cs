@@ -24,29 +24,13 @@ namespace SczoneTavernDataCollector.Main
         private const string TavernModeAutoRanked = "AutoRanked";
         private const string TavernModeAutoUnranked = "AutoUnranked";
         private static DateTime LastEditTime;
+        private bool needClose = false;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void SczoneLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(((LinkLabel)sender).Text) { UseShellExecute = true });
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Log($"程序启动 {Global.CurrentVersion}");
-            VersionLabel.Text = $"版本号: V{Global.CurrentVersion}";
-            FindTavernBankFiles();
-            CheckNewVersion();
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Log("程序退出");
-        }
 
         private void Log(string text)
         {
@@ -189,7 +173,7 @@ namespace SczoneTavernDataCollector.Main
                                     var updateStream = webClient.OpenRead(latestPackageUrl);
                                     UnzipFromStream(updateStream, "updates/");
                                     KillProcess(Properties.Settings.Default.MainAppName);
-                                    StartApp(Properties.Settings.Default.UpdaterAppName);
+                                    StartProcess(Properties.Settings.Default.UpdaterAppName);
                                 }
                                 else
                                 {
@@ -267,14 +251,54 @@ namespace SczoneTavernDataCollector.Main
             }
         }
 
-        private void StartApp(string appName)
+        private void StartProcess(string processName)
         {
-            var processes = Process.GetProcessesByName(appName);
+            var processes = Process.GetProcessesByName(processName);
             if (processes.Length == 0)
             {
-                Log("准备启动更新器 " + appName);
-                Process.Start(Path.Combine(Application.StartupPath, appName + ".exe"));
+                Log("准备启动更新器 " + processName);
+                Process.Start(Path.Combine(Application.StartupPath, processName + ".exe"));
             }
+        }
+
+        private void RestoreMainForm()
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Log($"从托盘恢复");
+                Show();
+                WindowState = FormWindowState.Normal;
+                ShowInTaskbar = true;
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Log($"程序启动 {Global.CurrentVersion}");
+            VersionLabel.Text = $"版本号: V{Global.CurrentVersion}";
+            FindTavernBankFiles();
+            CheckNewVersion();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (needClose)
+            {
+                Log("程序退出");
+            }
+            else
+            {
+                e.Cancel = true;
+                WindowState = FormWindowState.Minimized;
+                Hide();
+                ShowInTaskbar = false;
+                Log("程序退出到托盘");
+            }
+        }
+
+        private void SczoneLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(((LinkLabel)sender).Text) { UseShellExecute = true });
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
@@ -285,6 +309,39 @@ namespace SczoneTavernDataCollector.Main
         private void CheckVersionButton_Click(object sender, EventArgs e)
         {
             CheckNewVersion();
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                ShowInTaskbar = false;
+            }
+        }
+
+        private void AppNotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            RestoreMainForm();
+        }
+
+        private void AppNotifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                RestoreMainForm();
+            }
+        }
+
+        private void AppNotifyIconToolStripMenuItemShowForm_Click(object sender, EventArgs e)
+        {
+            RestoreMainForm();
+        }
+
+        private void AppNotifyIconToolStripMenuItemExit_Click(object sender, EventArgs e)
+        {
+            needClose = true;
+            Close();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace SczoneTavernDataCollector.Main
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OperationGroupBox = new System.Windows.Forms.GroupBox();
             this.VersionLabel = new System.Windows.Forms.Label();
@@ -42,9 +43,14 @@ namespace SczoneTavernDataCollector.Main
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.AppNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.AppNotifyIconContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AppNotifyIconToolStripMenuItemShowForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.AppNotifyIconToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.OperationGroupBox.SuspendLayout();
             this.LogGroupBox.SuspendLayout();
             this.IntroductionGroupBox.SuspendLayout();
+            this.AppNotifyIconContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // OperationGroupBox
@@ -190,6 +196,38 @@ namespace SczoneTavernDataCollector.Main
             this.label1.TabIndex = 0;
             this.label1.Text = "【采集原理】星际酒馆会将比赛次数、积分等信息存储至本地，本工具从本地保存的文件中读取数据并上报至服务器";
             // 
+            // AppNotifyIcon
+            // 
+            this.AppNotifyIcon.ContextMenuStrip = this.AppNotifyIconContextMenuStrip;
+            this.AppNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("AppNotifyIcon.Icon")));
+            this.AppNotifyIcon.Text = "星际战区-酒馆数据采集器";
+            this.AppNotifyIcon.Visible = true;
+            this.AppNotifyIcon.DoubleClick += new System.EventHandler(this.AppNotifyIcon_DoubleClick);
+            this.AppNotifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AppNotifyIcon_MouseClick);
+            // 
+            // AppNotifyIconContextMenuStrip
+            // 
+            this.AppNotifyIconContextMenuStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
+            this.AppNotifyIconContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AppNotifyIconToolStripMenuItemShowForm,
+            this.AppNotifyIconToolStripMenuItemExit});
+            this.AppNotifyIconContextMenuStrip.Name = "AppNotifyIconContextMenuStrip";
+            this.AppNotifyIconContextMenuStrip.Size = new System.Drawing.Size(271, 110);
+            // 
+            // AppNotifyIconToolStripMenuItemShowForm
+            // 
+            this.AppNotifyIconToolStripMenuItemShowForm.Name = "AppNotifyIconToolStripMenuItemShowForm";
+            this.AppNotifyIconToolStripMenuItemShowForm.Size = new System.Drawing.Size(270, 34);
+            this.AppNotifyIconToolStripMenuItemShowForm.Text = "显示窗口";
+            this.AppNotifyIconToolStripMenuItemShowForm.Click += new System.EventHandler(this.AppNotifyIconToolStripMenuItemShowForm_Click);
+            // 
+            // AppNotifyIconToolStripMenuItemExit
+            // 
+            this.AppNotifyIconToolStripMenuItemExit.Name = "AppNotifyIconToolStripMenuItemExit";
+            this.AppNotifyIconToolStripMenuItemExit.Size = new System.Drawing.Size(270, 34);
+            this.AppNotifyIconToolStripMenuItemExit.Text = "退出";
+            this.AppNotifyIconToolStripMenuItemExit.Click += new System.EventHandler(this.AppNotifyIconToolStripMenuItemExit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
@@ -208,12 +246,14 @@ namespace SczoneTavernDataCollector.Main
             this.Text = "星际战区-酒馆数据采集器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.OperationGroupBox.ResumeLayout(false);
             this.OperationGroupBox.PerformLayout();
             this.LogGroupBox.ResumeLayout(false);
             this.LogGroupBox.PerformLayout();
             this.IntroductionGroupBox.ResumeLayout(false);
             this.IntroductionGroupBox.PerformLayout();
+            this.AppNotifyIconContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -232,6 +272,10 @@ namespace SczoneTavernDataCollector.Main
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel SczoneLinkLabel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NotifyIcon AppNotifyIcon;
+        private System.Windows.Forms.ContextMenuStrip AppNotifyIconContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem AppNotifyIconToolStripMenuItemShowForm;
+        private System.Windows.Forms.ToolStripMenuItem AppNotifyIconToolStripMenuItemExit;
     }
 }
 
