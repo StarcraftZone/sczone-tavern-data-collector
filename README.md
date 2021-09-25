@@ -1,6 +1,6 @@
 # 星际战区-酒馆数据采集器
 
-1.0.1 内测版下载地址：https://github.com/HADB/sczone-tavern-data-collector/releases/download/1.0.1/1.0.1.4.zip
+1.0.2 内测版下载地址：https://github.com/HADB/sczone-tavern-data-collector/releases/download/1.0.2/1.0.2-full.zip
 
 ## 采集原理
 星际酒馆会将比赛次数、积分等信息存储至本地，本工具从本地保存的文件中读取数据并上报至服务器。
