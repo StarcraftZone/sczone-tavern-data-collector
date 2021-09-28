@@ -74,7 +74,7 @@ namespace SczoneTavernDataCollector.Main
                                 watcher.Filter = "*.SC2Bank";
                                 watcher.Changed += (object sender, FileSystemEventArgs e) =>
                                 {
-                                    if (LastEditTime == null || DateTime.Now - LastEditTime > TimeSpan.FromSeconds(5))
+                                    if (LastEditTime == null || DateTime.Now - LastEditTime > TimeSpan.FromSeconds(5) && e.Name == "SCBar.SC2Bank")
                                     {
                                         // 处理重复触发的问题，5 秒内只处理一次
                                         LastEditTime = DateTime.Now;
