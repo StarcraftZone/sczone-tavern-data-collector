@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("星际战区-酒馆数据采集器-自动更新程序")]
-[assembly: AssemblyDescription("https://sc.yuanfen.net")]
+[assembly: AssemblyDescription("https://starcraft.zone")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://sc.yuanfen.net")]
+[assembly: AssemblyCompany("https://starcraft.zone")]
 [assembly: AssemblyProduct("星际战区-酒馆数据采集器")]
 [assembly: AssemblyCopyright("Copyright © 猿奋网络 2021")]
 [assembly: AssemblyTrademark("")]

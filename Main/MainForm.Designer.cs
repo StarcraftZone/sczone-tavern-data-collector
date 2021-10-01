@@ -155,7 +155,7 @@ namespace SczoneTavernDataCollector.Main
             this.SczoneLinkLabel.Size = new System.Drawing.Size(305, 28);
             this.SczoneLinkLabel.TabIndex = 1;
             this.SczoneLinkLabel.TabStop = true;
-            this.SczoneLinkLabel.Text = "https://sc.yuanfen.net/tavern";
+            this.SczoneLinkLabel.Text = "https://starcraft.zone/tavern";
             this.SczoneLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SczoneLinkLabel_LinkClicked);
             // 
             // label4

@@ -195,7 +195,7 @@ namespace SczoneTavernDataCollector.Main
                     }
                     else
                     {
-                        Log($"更新检查失败，code: {(int)response.code}，请手动前往 https://sc.yuanfen.net/tavern 检查更新");
+                        Log($"更新检查失败，code: {(int)response.code}，请手动前往 https://starcraft.zone/tavern 检查更新");
                     }
                 });
             }
