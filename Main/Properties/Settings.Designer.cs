@@ -43,7 +43,7 @@ namespace SczoneTavernDataCollector.Main.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://sc-api.yuanfen.net")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.starcraft.zone")]
         public string ApiOrigin {
             get {
                 return ((string)(this["ApiOrigin"]));
