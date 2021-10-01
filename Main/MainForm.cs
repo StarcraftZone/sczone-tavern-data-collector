@@ -128,11 +128,12 @@ namespace SczoneTavernDataCollector.Main
                     regionNo = regionNo,
                     realmNo = realmNo,
                     profileNo = profileNo,
-                    top1 = int.Parse(elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int").Value),
-                    top4 = int.Parse(elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int").Value),
-                    games = int.Parse(elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int").Value),
-                    elo = double.Parse(elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed").Value),
-                    code = long.Parse(elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int").Value)
+                    top1 = (int)elements.First(n => n.Attribute("name").Value == "1st").Element("Value").Attribute("int"),
+                    top4 = (int)elements.First(n => n.Attribute("name").Value == "wins").Element("Value").Attribute("int"),
+                    games = (int)elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int"),
+                    elo = (double)elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed"),
+                    code = (long)elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int"),
+                    code2 = (long?)elements.FirstOrDefault(n => n.Attribute("name").Value == "code2")?.Element("Value").Attribute("int")
                 };
             }
             else

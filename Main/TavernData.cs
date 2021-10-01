@@ -19,5 +19,7 @@
         public double elo { get; set; }
 
         public long code { get; set; }
+
+        public long? code2 { get; set; }
     }
 }
