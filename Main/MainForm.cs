@@ -121,7 +121,7 @@ namespace SczoneTavernDataCollector.Main
                 }
             }
 
-            Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传成功: {JsonConvert.SerializeObject(dataList)}");
+            Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传: {JsonConvert.SerializeObject(dataList)}");
         }
 
         private TavernData GetTravernDataFromSection(IEnumerable<XElement> sections, string sectionName, int regionNo, int realmNo, long profileNo)

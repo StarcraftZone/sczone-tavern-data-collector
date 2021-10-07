@@ -26,6 +26,12 @@ namespace SczoneTavernDataCollector.Main
         {
             try
             {
+                // Win10 以下环境，使用 http
+                if (Environment.OSVersion.Version.Major < 10)
+                {
+                    url = url.Replace("https", "http");
+                }
+
                 var random = new Random().Next(10000);
                 Global.Log.Info("发送请求: " + random + ", GET: " + url);
                 if (headers != null)
@@ -56,6 +62,12 @@ namespace SczoneTavernDataCollector.Main
         {
             try
             {
+                // Win10 以下环境，使用 http
+                if (Environment.OSVersion.Version.Major < 10)
+                {
+                    url = url.Replace("https", "http");
+                }
+
                 var random = new Random().Next(10000);
                 var json = JsonConvert.SerializeObject(param);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
