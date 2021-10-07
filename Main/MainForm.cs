@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -29,6 +30,13 @@ namespace SczoneTavernDataCollector.Main
         public MainForm()
         {
             InitializeComponent();
+            AddToStartup();
+        }
+
+        private void AddToStartup()
+        {
+            var registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            registryKey.SetValue(Application.ProductName, Application.ExecutablePath);
         }
 
 
