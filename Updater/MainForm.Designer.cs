@@ -35,7 +35,8 @@ namespace SczoneTavernDataCollector.Updater
             // 
             // updateProgressBar
             // 
-            this.updateProgressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.updateProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.updateProgressBar.Location = new System.Drawing.Point(20, 20);
             this.updateProgressBar.Margin = new System.Windows.Forms.Padding(4);
             this.updateProgressBar.Name = "updateProgressBar";
@@ -44,7 +45,8 @@ namespace SczoneTavernDataCollector.Updater
             // 
             // textLabel
             // 
-            this.textLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textLabel.Location = new System.Drawing.Point(20, 118);
             this.textLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textLabel.Name = "textLabel";

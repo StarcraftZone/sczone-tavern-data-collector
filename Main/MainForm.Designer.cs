@@ -70,6 +70,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // VersionLabel
             // 
+            this.VersionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.ForeColor = System.Drawing.SystemColors.GrayText;
             this.VersionLabel.Location = new System.Drawing.Point(170, 248);
@@ -81,6 +83,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // CheckVersionButton
             // 
+            this.CheckVersionButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckVersionButton.Location = new System.Drawing.Point(22, 155);
             this.CheckVersionButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CheckVersionButton.Name = "CheckVersionButton";
@@ -92,6 +96,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // RefreshButton
             // 
+            this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RefreshButton.Location = new System.Drawing.Point(22, 51);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.RefreshButton.Name = "RefreshButton";
@@ -148,11 +154,13 @@ namespace SczoneTavernDataCollector.Main
             // 
             // SczoneLinkLabel
             // 
+            this.SczoneLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SczoneLinkLabel.AutoSize = true;
             this.SczoneLinkLabel.Location = new System.Drawing.Point(22, 375);
             this.SczoneLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SczoneLinkLabel.Name = "SczoneLinkLabel";
-            this.SczoneLinkLabel.Size = new System.Drawing.Size(305, 28);
+            this.SczoneLinkLabel.Size = new System.Drawing.Size(297, 28);
             this.SczoneLinkLabel.TabIndex = 1;
             this.SczoneLinkLabel.TabStop = true;
             this.SczoneLinkLabel.Text = "https://starcraft.zone/tavern";
@@ -160,6 +168,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 335);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -170,6 +180,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 440);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -180,6 +192,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Location = new System.Drawing.Point(13, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -189,6 +203,8 @@ namespace SczoneTavernDataCollector.Main
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(13, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -212,19 +228,19 @@ namespace SczoneTavernDataCollector.Main
             this.AppNotifyIconToolStripMenuItemShowForm,
             this.AppNotifyIconToolStripMenuItemExit});
             this.AppNotifyIconContextMenuStrip.Name = "AppNotifyIconContextMenuStrip";
-            this.AppNotifyIconContextMenuStrip.Size = new System.Drawing.Size(271, 110);
+            this.AppNotifyIconContextMenuStrip.Size = new System.Drawing.Size(169, 72);
             // 
             // AppNotifyIconToolStripMenuItemShowForm
             // 
             this.AppNotifyIconToolStripMenuItemShowForm.Name = "AppNotifyIconToolStripMenuItemShowForm";
-            this.AppNotifyIconToolStripMenuItemShowForm.Size = new System.Drawing.Size(270, 34);
+            this.AppNotifyIconToolStripMenuItemShowForm.Size = new System.Drawing.Size(168, 34);
             this.AppNotifyIconToolStripMenuItemShowForm.Text = "显示窗口";
             this.AppNotifyIconToolStripMenuItemShowForm.Click += new System.EventHandler(this.AppNotifyIconToolStripMenuItemShowForm_Click);
             // 
             // AppNotifyIconToolStripMenuItemExit
             // 
             this.AppNotifyIconToolStripMenuItemExit.Name = "AppNotifyIconToolStripMenuItemExit";
-            this.AppNotifyIconToolStripMenuItemExit.Size = new System.Drawing.Size(270, 34);
+            this.AppNotifyIconToolStripMenuItemExit.Size = new System.Drawing.Size(168, 34);
             this.AppNotifyIconToolStripMenuItemExit.Text = "退出";
             this.AppNotifyIconToolStripMenuItemExit.Click += new System.EventHandler(this.AppNotifyIconToolStripMenuItemExit_Click);
             // 
