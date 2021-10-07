@@ -181,7 +181,6 @@ namespace SczoneTavernDataCollector.Main
                                     var webClient = new WebClient();
                                     var updateStream = webClient.OpenRead(latestPackageUrl);
                                     UnzipFromStream(updateStream, "updates/");
-                                    KillProcess(Properties.Settings.Default.MainAppName);
                                     StartProcess(Properties.Settings.Default.UpdaterAppName);
                                 }
                                 else

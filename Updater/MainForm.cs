@@ -22,7 +22,6 @@ namespace SczoneTavernDataCollector.Updater
         {
             Task.Run(() =>
             {
-                Thread.Sleep(1000); // 等待采集器自己退出
                 var processes = Process.GetProcessesByName(Properties.Settings.Default.MainAppName);
                 foreach (var process in processes)
                 {
