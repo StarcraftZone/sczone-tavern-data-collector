@@ -72,14 +72,14 @@ namespace SczoneTavernDataCollector.Main
             // 
             this.VersionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.VersionLabel.AutoSize = true;
             this.VersionLabel.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.VersionLabel.Location = new System.Drawing.Point(170, 248);
+            this.VersionLabel.Location = new System.Drawing.Point(24, 242);
             this.VersionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(156, 28);
+            this.VersionLabel.Size = new System.Drawing.Size(302, 45);
             this.VersionLabel.TabIndex = 4;
             this.VersionLabel.Text = "版本号：V1.0.0";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CheckVersionButton
             // 
@@ -264,7 +264,6 @@ namespace SczoneTavernDataCollector.Main
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.OperationGroupBox.ResumeLayout(false);
-            this.OperationGroupBox.PerformLayout();
             this.LogGroupBox.ResumeLayout(false);
             this.LogGroupBox.PerformLayout();
             this.IntroductionGroupBox.ResumeLayout(false);
