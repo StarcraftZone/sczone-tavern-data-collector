@@ -30,7 +30,6 @@ namespace SczoneTavernDataCollector.Main
         public MainForm()
         {
             InitializeComponent();
-            AddToStartup();
         }
 
         private void AddToStartup()
@@ -141,7 +140,9 @@ namespace SczoneTavernDataCollector.Main
                     games = (int)elements.First(n => n.Attribute("name").Value == "games").Element("Value").Attribute("int"),
                     elo = (double)elements.First(n => n.Attribute("name").Value == "elo").Element("Value").Attribute("fixed"),
                     code = (long)elements.First(n => n.Attribute("name").Value == "code").Element("Value").Attribute("int"),
-                    code2 = (long?)elements.FirstOrDefault(n => n.Attribute("name").Value == "code2")?.Element("Value").Attribute("int")
+                    code2 = (long?)elements.FirstOrDefault(n => n.Attribute("name").Value == "code2")?.Element("Value").Attribute("int"),
+                    osVersion = Environment.OSVersion.Version.ToString(),
+                    collectorVersion = Global.CurrentVersion.ToString()
                 };
             }
             else
@@ -286,6 +287,7 @@ namespace SczoneTavernDataCollector.Main
             VersionLabel.Text = $"版本号: V{Global.CurrentVersion}";
             FindTavernBankFiles();
             CheckNewVersion();
+            AddToStartup();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

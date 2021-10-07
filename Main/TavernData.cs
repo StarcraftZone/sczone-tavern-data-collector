@@ -21,5 +21,9 @@
         public long code { get; set; }
 
         public long? code2 { get; set; }
+
+        public string osVersion { get; set; }
+
+        public string collectorVersion { get; set; }
     }
 }
