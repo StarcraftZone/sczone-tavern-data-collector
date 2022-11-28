@@ -103,6 +103,7 @@ namespace SczoneTavernDataCollector.Main
 
         private void UploadBankData(string filePath, int regionNo, int realmNo, long profileNo)
         {
+            Log($"酒馆存档文件：{filePath}");
             var xmlString = File.ReadAllText(filePath, Encoding.UTF8);
             var doc = XDocument.Parse(xmlString);
             var sections = doc.Descendants("Section");
@@ -117,10 +118,9 @@ namespace SczoneTavernDataCollector.Main
                 if (data != null)
                 {
                     HttpHelper.Post($"{Properties.Settings.Default.ApiOrigin}/tavern/upload", data);
+                    Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传: {JsonConvert.SerializeObject(data)}");
                 }
             }
-
-            Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传: {JsonConvert.SerializeObject(dataList)}");
         }
 
         private TavernData GetTravernDataFromSection(IEnumerable<XElement> sections, string sectionName, int regionNo, int realmNo, long profileNo)

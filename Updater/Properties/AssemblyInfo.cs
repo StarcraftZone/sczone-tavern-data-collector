@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("https://starcraft.zone")]
 [assembly: AssemblyProduct("星际战区-酒馆数据采集器")]
-[assembly: AssemblyCopyright("Copyright © 猿奋网络 2021")]
+[assembly: AssemblyCopyright("Copyright © 猿奋网络 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
