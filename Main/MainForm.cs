@@ -48,7 +48,26 @@ namespace SczoneTavernDataCollector.Main
             Global.Log.Info(text);
         }
 
-        private void FindTavernBankFiles()
+        private string GetTavernBankFilePath(string profilePath)
+        {
+            var banksDirectory = new DirectoryInfo(Path.Combine(profilePath, "Banks"));
+            if (banksDirectory.Exists)
+            {
+                foreach (var bankDirectory in banksDirectory.GetDirectories())
+                {
+                    foreach (var bankFile in bankDirectory.GetFiles())
+                    {
+                        if (bankFile.Name == "SCBar.SC2Bank")
+                        {
+                            return bankFile.FullName;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void UploadAndWatchTavernBankFiles()
         {
             var starcraft2Path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "StarCraft II");
             Log("星际2档案目录: " + starcraft2Path);
@@ -69,10 +88,10 @@ namespace SczoneTavernDataCollector.Main
                             var profileNo = long.Parse(matches.Groups[3].Value);
                             if (realmNo > 0)
                             {
-                                var tavernDirectory = new DirectoryInfo(Path.Combine(accountSubDirectory.FullName, "Banks/5-S2-1-1337869"));
-                                if (tavernDirectory.Exists)
+                                var tavernBankFilePath = GetTavernBankFilePath(accountSubDirectory.FullName);
+                                if (tavernBankFilePath != null)
                                 {
-                                    UploadBankData(Path.Combine(tavernDirectory.FullName, "SCBar.SC2Bank"), regionNo, realmNo, profileNo);
+                                    UploadBankData(tavernBankFilePath, regionNo, realmNo, profileNo);
                                 }
                                 var watcher = new FileSystemWatcher();
                                 watcher.Path = accountSubDirectory.FullName;
@@ -103,7 +122,8 @@ namespace SczoneTavernDataCollector.Main
 
         private void UploadBankData(string filePath, int regionNo, int realmNo, long profileNo)
         {
-            Log($"酒馆存档文件：{filePath}");
+            var regionName = GetRegionNameFromRegionNo(regionNo);
+            Log($"【{regionName}】酒馆存档文件：{filePath}");
             var xmlString = File.ReadAllText(filePath, Encoding.UTF8);
             var doc = XDocument.Parse(xmlString);
             var sections = doc.Descendants("Section");
@@ -121,6 +141,27 @@ namespace SczoneTavernDataCollector.Main
                     Log($"{regionNo}-S2-{realmNo}-{profileNo} 数据上传: {JsonConvert.SerializeObject(data)}");
                 }
             }
+        }
+
+        private string GetRegionNameFromRegionNo(int regionNo)
+        {
+            if (regionNo == 1)
+            {
+                return "美服";
+            }
+            if (regionNo == 2)
+            {
+                return "欧服";
+            }
+            if (regionNo == 3)
+            {
+                return "韩服";
+            }
+            if (regionNo == 5)
+            {
+                return "国服";
+            }
+            return "未知";
         }
 
         private TavernData GetTravernDataFromSection(IEnumerable<XElement> sections, string sectionName, int regionNo, int realmNo, long profileNo)
@@ -285,7 +326,7 @@ namespace SczoneTavernDataCollector.Main
         {
             Log($"程序启动 {Global.CurrentVersion}");
             VersionLabel.Text = $"版本号: V{Global.CurrentVersion}";
-            FindTavernBankFiles();
+            UploadAndWatchTavernBankFiles();
             CheckNewVersion();
             AddToStartup();
         }
@@ -313,7 +354,7 @@ namespace SczoneTavernDataCollector.Main
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            FindTavernBankFiles();
+            UploadAndWatchTavernBankFiles();
         }
 
         private void CheckVersionButton_Click(object sender, EventArgs e)
