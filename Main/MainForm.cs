@@ -14,7 +14,6 @@ using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace SczoneTavernDataCollector.Main
 {
@@ -329,6 +328,8 @@ namespace SczoneTavernDataCollector.Main
             UploadAndWatchTavernBankFiles();
             CheckNewVersion();
             AddToStartup();
+            ShowInTaskbar = false;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
