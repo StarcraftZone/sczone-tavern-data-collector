@@ -1,6 +1,6 @@
 # 星际战区-酒馆数据采集器
 
-最新版下载地址：https://cdn.starcraft.zone/downloads/collector-latest.zip
+最新版下载地址：https://github.com/StarcraftZone/sczone-tavern-data-collector/releases/latest
 
 ## 采集原理
 星际酒馆会将比赛次数、积分等信息存储至本地，本工具从本地保存的文件中读取数据并上报至服务器。
